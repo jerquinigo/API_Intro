@@ -123,14 +123,9 @@ let APIResponse = {
 };
 
 
-/*Create a new array, `breedList`. This array should contain each of the breeds, _including sub-breeds_. When there is a list of sub-breeds, append each one to the beginning of the primary breed name. Capitalize the first letter of each word.
-
-For example, the `Bulldog` entry in the breed list, which reads: `bulldog: ["boston", "french"]` should be converted into `"Boston Bulldog, French Bulldog"`. By contrast, the entry `chihuahua: []` can be converted into simply `"Chihuahua"`.*/
-
-
-
+document.addEventListener("DOMContentLoaded",()=>{
+console.log("oaded")
 let breedList =[];
-
 let dogsObj = APIResponse.message
 
 for(let key in dogsObj){
@@ -141,31 +136,31 @@ for(let key in dogsObj){
       //let key1 = key[0].toUpperCase() + key.slice(1);
       breedList.push(`${dog1} ${key1}`)
     })
-
   }
   else {
-
     breedList.push(key1)
-  }
+   }
   console.log(breedList)
-}
-
-
-
-
-/*let breedList =[];
-
-let dogsObj = APIResponse.message
-
-for(let key in dogsObj){
-  if(dogsObj[key].length){
-    console.log(key,"this is the key")
-    dogsObj[key].forEach(dog => {
-      breedList.push(`${dog} ${key}`)
-    })
-    console.log(breedList, "this is the breedlist");
   }
-  else {
-    breedList.push(key)
-  }
-}*/
+//end of two loops
+
+
+let button = document.querySelector(".button")
+button.addEventListener("click",()=>{
+
+  let ptag = document.querySelector(".output");
+let random = Math.floor(Math.random() * breedList.length)
+let dogGenerator = breedList[random]
+ptag.innerText = dogGenerator;
+console.log(ptag,'this is ptag')
+//event.currentTarget.appendChild(dogGenerator)
+
+
+
+//change inner button text to another one after p tag has been changed
+  })
+
+})
+
+
+// }) //closing bracket for DOMContentloaded
